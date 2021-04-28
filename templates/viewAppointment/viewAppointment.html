@@ -1,0 +1,43 @@
+{% extends "base/base.html" %}
+
+{% block title %}View Appointment{% endblock title %}
+
+{% block body %}
+
+
+<h2 class="text-center alert alert-info">Your Upcoming Appointments {{patient_name}}</h2>
+
+<div class="container">
+<div class="col-sm-10">
+<table style="margin-left:auto;margin-right:auto;" class="table table-hover table-success table-striped table-bordered">
+  <thead>
+    <tr style="text-align:center">
+      <th scope="col">No.</th>
+      <th scope="col">Doctor</th>
+      <th scope="col">Adress</th>
+      <th scope="col">Date</th>
+      <th scope="col">Time</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for row, list_time, address,select_doctor,appointment_date,appointment_time in appointment_details %}
+   <tr style="text-align:center">
+      <th scope="row" value="{{list_time}}">{{row}} </th>
+      <td>{{select_doctor}}</td>
+      <td>{{address}}</td>
+      <td>{{appointment_date}}</td>
+      <td>{{appointment_time}}</td>
+      <td>
+      <form action="{% url 'removeAppointments' list_time %}" method="POST">
+        {% csrf_token %}
+        <input type="submit" class="btn btn-danger" value="Remove">      
+      </form>
+      </td>
+      
+    </tr>
+  {% endfor %}
+  </tbody>
+    
+</div>
+</div>
+{% endblock body %}
