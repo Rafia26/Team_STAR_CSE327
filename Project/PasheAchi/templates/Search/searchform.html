@@ -1,0 +1,37 @@
+{% extends "LogInRegister/base.html" %}
+
+{% block title %}Search for Doctors{% endblock title %}
+
+{% block body %}
+
+<div class="container mt-5">
+<h2 class="text-center alert alert-info">Search for Doctors</h2>
+
+<form action="{% url 'searchForm' %}" method="POST">
+   {% csrf_token %}
+   
+<div class="form-group">
+    <label for="specialties">Select Doctor's Specialties</label>
+    <select class="form-control" id="specialties" required>
+      <option>Cardiologist</option>
+      <option>Neurologist</option>
+      <option>Dermatologist</option>
+      <option>Internist</option>
+      <option>Gynaecologist</option>
+    </select>
+      </div>
+    <div class="form-group">
+     <label for="name">Name</label>
+    <input type="text" class="form-control" id="name" placeholder="Dr. X">
+   </div>
+  <!--<div class="form-group">
+    <label for="email">Email address</label>
+    <input type="email" class="form-control" id="email" placeholder="name@example.com">
+  </div> -->
+
+  <button type="submit"><i class="fa fa-search"></i></button>
+
+</form>
+
+</div>
+{% endblock body %}

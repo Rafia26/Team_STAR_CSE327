@@ -3,7 +3,14 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('searchForm/', views.search_doctors_form,name="searchForm"),
+"""
+Url for search form
+"""
+    path('searchform/', views.searchform,name="searchForm"),
+
+"""
+    Showing search detail on this url
+"""
     path('search/', views.search, name="search"),
     
 ]
