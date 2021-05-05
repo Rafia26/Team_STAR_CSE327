@@ -1,0 +1,40 @@
+{% extends "LogInRegister/base.html" %}
+
+{% block title %}Search Results{% endblock title %}
+
+{% block body %}
+
+<div class="container mt-5">
+<h2 class="text-center alert alert-info">Search Results</h2>
+
+         <div class="tm-main-content">
+            <section class="tm-section tm-section-small text-center">
+               <!--Showing all the details that was retrieved here-->
+			   {% csrf_token %}
+               {% for firstName, lastName, 
+                      gender, designation, 
+                      docEmail, docWorkplace, 
+                      time1, time2,
+                      docFees in comb_lis %}
+               <h1>Here are the search results:</h1>
+			   <div class="results">
+               
+                <h3 class="tm-section-header3">First Name: {{firstName}}</h3>
+				<h3 class="tm-section-header3">Last Name: {{lastName}}</h3>
+                <h3 class="tm-section-header3">Gender: {{gender}}</h3>
+				<h3 class="tm-section-header3">Designation: {{designation}}</h3>
+				<h3 class="tm-section-header3">Email: {{docEmail}}</h3>
+				<h3 class="tm-section-header3">Workplace: {{docWorkplace}}</h3>
+				<h3 class="tm-section-header3">Consultation hour 1: {{time1}}</h3>
+				<h3 class="tm-section-header3">Consultation hour 2: {{time2}}</h3>
+				<h3 class="tm-section-header3">Fees: {{docFees}}</h3>
+				</div>
+               {% endfor %}
+            </section>
+         </div>
+         <br>
+      </div>
+
+
+{% endblock body %}
+

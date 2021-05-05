@@ -7,7 +7,7 @@
 <div class="container mt-5">
 <h2 class="text-center alert alert-info">Search for Doctors</h2>
 
-<form action="{% url 'searchForm' %}" method="POST">
+<form action="{% url 'search' %}" method="POST">
    {% csrf_token %}
    
 <div class="form-group">
