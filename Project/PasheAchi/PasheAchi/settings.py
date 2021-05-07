@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'makeAppointment',
     'viewAppointment',
     'search',
+    'donate',
     
 ]
 

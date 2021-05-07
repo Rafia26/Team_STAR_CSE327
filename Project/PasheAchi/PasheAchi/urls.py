@@ -20,6 +20,9 @@ urlpatterns = [
 
     path('admin/', admin.site.urls),
     path('', views.login, name="login"),
+    path('contact_us/', views.contact_us, name="contact_us"),
+    path('description/', views.description, name="description"),
+    path('about_us/', views.about_us, name="about_us"),
     path('google_login/', views.google_login, name="google_login"),
     path('home/', views.home, name="home"),
     path('patient_signup/', views.patient_signup, name="patient_signup"),
@@ -31,6 +34,9 @@ urlpatterns = [
     path('makeAp/', include('makeAppointment.urls')),
     path('viewAp/', include('viewAppointment.urls')),
     path('search/', include('search.urls')),
+    path('donate/', include('donate.urls')),
+    
+    
     
     
 ]
