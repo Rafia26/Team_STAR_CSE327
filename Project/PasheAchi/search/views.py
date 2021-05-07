@@ -23,7 +23,7 @@ authe = firebase.auth()
 storage = firebase.storage()
 database = firebase.database()
 
-def search_doctors_form(request):
+def search_form(request):
     """
         This method is used to display search for doctors form.
 
@@ -47,95 +47,79 @@ def search_doctors_form(request):
 def search(request):
 
     """
-          This method is used to search doctors based on the category inserted by user; it searches all
-          the records in the database's child for the specialties and display the information.
+        This method is used to get the specialty and doctor's name from the search html form. 
 
+        By matching the specialty and name, it retrieves doctor's information from database to display in the results.
 
-          :param request: It is a HttpResponse from user.
+        :param request: It's a HttpResponse from user.
 
+        :type request: HttpResponse.
 
-          :type request: HttpResponse.
+        :return: This method returns a html page that displays the search results.
 
-
-          :return: This method returns a html page that displays of the search for doctors from the database.
-
-
-          :rtype: HttpResponse.
-          """
+        :rtype: HttpResponse.
+    """
     specialties = request.POST.get('specialties')
     docName = request.POST.get('docName')
+    docName=docName.lower()
  
-    # If no input is given, then render to searchform.html
-    if specialties or docName =="":
-        return render(request, "searchform.html")
-    if specialties is None or docName is None:
-        print(docName ,"Name",specialties)
-        return render(request, "searchform.html")
-    else:
-        if specialties == "Cardiologist" or "Neurologist" or "Dermatologist" or "Internist" or "Gynaecologist":
-            data = database.child("Specialties").child(specialties).shallow().get().val()
-            uidlist = []
-            requid = 'null'
-              
-            # appending all the id in uidlist
-            for i in data:
-                uidlist.append(i)
-                  
-            # looking for the desired uid among all     
-            for i in uidlist:
-                fName = database.child("Specialties").child(specialties).child(i).child("fname").get().val()
-                lName = database.child("Specialties").child(specialties).child(i).child("lname").get().val()
-                name=fName + " " +lName 
-                name=name.lower()
-                docName=docName.lower()
-                print(name,docName)
-                  
-                
-                # storing that uid in requid
-                if (name == docName):
-                    requid = i
-            if requid=='null':
-                return render(request, "searchform.html")
-            print(requid)
-            fName = database.child("Specialties").child(specialties).child(requid).child("fname").get().val()
-            lName = database.child("Specialties").child(specialties).child(requid).child("lname").get().val()
-            docGender = database.child("Specialties").child(specialties).child(requid).child("gender").get().val()
-            docDesignation = database.child("Specialties").child(specialties).child(requid).child("designation").get().val()
-            email = database.child("Specialties").child(specialties).child(requid).child("email").get().val()
-            workplace = database.child("Specialties").child(specialties).child(requid).child("wplace").get().val()
-            consultationHour1 = database.child("Specialties").child(specialties).child(requid).child("timeOne").get().val()
-            consultationHour2 = database.child("Specialties").child(specialties).child(requid).child("timeTwo").get().val()
-            fees = database.child("Specialties").child(specialties).child(requid).child("vfees").get().val()
+
+    if specialties == "Cardiologist" or "Neurologist" or "Dermatologist" or "Internist" or "Gynaecologist":
+        timeStamp = database.child("Specialties").child(specialties).get()
+    timeStampList = []
+    for i in timeStamp.each():
+        timeStampKey = i.key()
+        timeStampList.append(timeStampKey)
+    
+    for i in timeStampList:
+        fName = database.child("Specialties").child(specialties).child(i).child("fname").get().val()
+        lName = database.child("Specialties").child(specialties).child(i).child("lname").get().val()
+        name=fName + " " +lName 
+        name=name.lower()
+   
+        # storing the desired uid in requid
+        if (name == docName):
+            requid = i
             
-            firstName = []
-            firstName.append(fname)
-            lastName = []
-            lastName.append(lname)
-            gender = []
-            gender.append(docGender)
-            designation = []
-            designation.append(docDesignation)
-            docEmail = []
-            docEmail.append(email)
-            docWorkplace = []
-            docWorkplace.append(workplace)
-            time1 = []
-            time1.append(consultationHour1)
-            time2 = []
-            time2.append(consultationHour2)
-            docFees = []
-            docFees.append(fees)
             
-            comb_lis = zip(firstName, lastName, 
-                           gender, designation, 
-                           docEmail, docWorkplace, 
-                           time1, time2,
-                           docFees
-                           )
+    fName = database.child("Specialties").child(specialties).child(requid).child("fname").get().val()
+    lName = database.child("Specialties").child(specialties).child(requid).child("lname").get().val()
+    docGender = database.child("Specialties").child(specialties).child(requid).child("gender").get().val()
+    docDesignation = database.child("Specialties").child(specialties).child(requid).child("designation").get().val()
+    email = database.child("Specialties").child(specialties).child(requid).child("email").get().val()
+    workplace = database.child("Specialties").child(specialties).child(requid).child("wplace").get().val()
+    consultationHour1 = database.child("Specialties").child(specialties).child(requid).child("timeOne").get().val()
+    consultationHour2 = database.child("Specialties").child(specialties).child(requid).child("timeTwo").get().val()
+    fees = database.child("Specialties").child(specialties).child(requid).child("vfees").get().val()
+            
+    firstName = []
+    firstName.append(fname)
+    lastName = []
+    lastName.append(lname)
+    gender = []
+    gender.append(docGender)
+    designation = []
+    designation.append(docDesignation)
+    docEmail = []
+    docEmail.append(email)
+    docWorkplace = []
+    docWorkplace.append(workplace)
+    time1 = []
+    time1.append(consultationHour1)
+    time2 = []
+    time2.append(consultationHour2)
+    docFees = []
+    docFees.append(fees)
+            
+    comb_lis = zip(firstName, lastName, 
+                gender, designation, 
+                docEmail, docWorkplace, 
+                time1, time2, 
+                docFees)
               
             
-            # Sending all data in zip form to search.html        
-            return render(request,'search/search.html',{"comb_lis": comb_lis})
+     # Sending all data in zip form to search.html        
+    return render(request,'search/search.html',{"comb_lis": comb_lis})
     
 
 

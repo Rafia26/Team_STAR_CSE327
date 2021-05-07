@@ -17,8 +17,20 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('search/',include('search.urls')),
-    path('aboutUs/',include('AboutUs.urls')),
+
     path('admin/', admin.site.urls),
+    path('', views.login, name="login"),
+    path('google_login/', views.google_login, name="google_login"),
+    path('home/', views.home, name="home"),
+    path('patient_signup/', views.patient_signup, name="patient_signup"),
+    path('doctor_signup/', views.doctor_signup, name="doctor_signup"),
+    path('patient_post_signup/', views.patient_post_signup, name="patient_post_signup"),
+    path('doctor_post_signup/', views.doctor_post_signup, name="doctor_post_signup"),
+    path('logout/', views.logout, name="logout"), 
+    path('forget_password/', views.forget_password, name = "forget_password"),   
+    path('makeAp/', include('makeAppointment.urls')),
+    path('viewAp/', include('viewAppointment.urls')),
+    path('search/', include('search.urls')),
+    
     
 ]
