@@ -11,6 +11,7 @@
             <section class="tm-section tm-section-small text-center">
                <!--Showing all the details that was retrieved here-->
 			   {% csrf_token %}
+            
                {% for firstName, lastName, 
                       gender, designation, 
                       docEmail, docWorkplace, 
@@ -30,6 +31,7 @@
 				<h3 class="tm-section-header3">Fees: {{docFees}}</h3>
 				</div>
                {% endfor %}
+               
             </section>
          </div>
          <br>
