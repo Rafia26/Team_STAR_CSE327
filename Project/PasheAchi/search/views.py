@@ -51,76 +51,116 @@ def search(request):
 
         By matching the specialty and name, it retrieves doctor's information from database to display in the results.
 
+        If search criteria is not matched from the database, it shows search is not found and gives option to search again.
+
         :param request: It's a HttpResponse from user.
 
         :type request: HttpResponse.
 
-        :return: This method returns a html page that displays the search results.
+        :return: This method returns a html page that displays the search results or shows search is not found.
 
         :rtype: HttpResponse.
     """
-    specialties = request.POST.get('specialties')
-    docName = request.POST.get('docName')
-    docName=docName.lower()
+    if request.method == "POST" and "csrfmiddlewaretoken" in request.POST:
+        specialties = request.POST.get('specialties')
+        docName = request.POST.get('docName')
+        docName=docName.lower()
  
 
-    if specialties == "Cardiologist" or "Neurologist" or "Dermatologist" or "Internist" or "Gynaecologist":
+    if specialties == ("Cardiologist" or "Neurologist" or "Dermatologist" or "Internist" or "Gynaecologist" and docName is not None):
         timeStamp = database.child("Specialties").child(specialties).get()
-    timeStampList = []
-    for i in timeStamp.each():
-        timeStampKey = i.key()
-        timeStampList.append(timeStampKey)
+        timeStampList = []
+        for i in timeStamp.each():
+            timeStampKey = i.key()
+            timeStampList.append(timeStampKey)
     
-    for i in timeStampList:
-        fName = database.child("Specialties").child(specialties).child(i).child("fname").get().val()
-        lName = database.child("Specialties").child(specialties).child(i).child("lname").get().val()
-        name=fName + " " +lName 
-        name=name.lower()
+        for i in timeStampList:
+            fName = database.child("Specialties").child(specialties).child(i).child("fname").get().val()
+            lName = database.child("Specialties").child(specialties).child(i).child("lname").get().val()
+            name=fName + " " +lName 
+            name=name.lower()
    
-        # storing the desired uid in requid
-        if (name == docName):
-            requid = i
+            # storing the desired user id in requid
+            if (name == docName):
+                requid = i
+                break
+            else:
+                requid = None
+        
+        if (requid is not None):
+            fName = database.child("Specialties").child(specialties).child(requid).child("fname").get().val()
+            lName = database.child("Specialties").child(specialties).child(requid).child("lname").get().val()
+            docGender = database.child("Specialties").child(specialties).child(requid).child("gender").get().val()
+            docDesignation = database.child("Specialties").child(specialties).child(requid).child("designation").get().val()
+            email = database.child("Specialties").child(specialties).child(requid).child("email").get().val()
+            workplace = database.child("Specialties").child(specialties).child(requid).child("wplace").get().val()
+            consultationHour1 = database.child("Specialties").child(specialties).child(requid).child("timeOne").get().val()
+            consultationHour2 = database.child("Specialties").child(specialties).child(requid).child("timeTwo").get().val()
+            fees = database.child("Specialties").child(specialties).child(requid).child("vfees").get().val()
             
+            firstName = []
+            firstName.append(fname)
+            lastName = []
+            lastName.append(lname)
+            gender = []
+            gender.append(docGender)
+            designation = []
+            designation.append(docDesignation)
+            docEmail = []
+            docEmail.append(email)
+            docWorkplace = []
+            docWorkplace.append(workplace)
+            time1 = []
+            time1.append(consultationHour1)
+            time2 = []
+            time2.append(consultationHour2)
+            docFees = []
+            docFees.append(fees)
             
-    fName = database.child("Specialties").child(specialties).child(requid).child("fname").get().val()
-    lName = database.child("Specialties").child(specialties).child(requid).child("lname").get().val()
-    docGender = database.child("Specialties").child(specialties).child(requid).child("gender").get().val()
-    docDesignation = database.child("Specialties").child(specialties).child(requid).child("designation").get().val()
-    email = database.child("Specialties").child(specialties).child(requid).child("email").get().val()
-    workplace = database.child("Specialties").child(specialties).child(requid).child("wplace").get().val()
-    consultationHour1 = database.child("Specialties").child(specialties).child(requid).child("timeOne").get().val()
-    consultationHour2 = database.child("Specialties").child(specialties).child(requid).child("timeTwo").get().val()
-    fees = database.child("Specialties").child(specialties).child(requid).child("vfees").get().val()
-            
-    firstName = []
-    firstName.append(fname)
-    lastName = []
-    lastName.append(lname)
-    gender = []
-    gender.append(docGender)
-    designation = []
-    designation.append(docDesignation)
-    docEmail = []
-    docEmail.append(email)
-    docWorkplace = []
-    docWorkplace.append(workplace)
-    time1 = []
-    time1.append(consultationHour1)
-    time2 = []
-    time2.append(consultationHour2)
-    docFees = []
-    docFees.append(fees)
-            
-    comb_lis = zip(firstName, lastName, 
-                gender, designation, 
-                docEmail, docWorkplace, 
-                time1, time2, 
-                docFees)
+            comb_lis = zip(firstName, lastName, 
+                        gender, designation, 
+                        docEmail, docWorkplace, 
+                        time1, time2, 
+                        docFees)
               
             
-     # Sending all data in zip form to search.html        
-    return render(request,'search/search.html',{"comb_lis": comb_lis})
+            # Sending all data in zip form to search.html        
+            return render(request,'search/search.html',{"comb_lis": comb_lis})
+
+        else:
+            return render(request, "search/searchnotfound.html")
+
+def search_not_found(request):
+    """
+        This method is used to display search not found page. It will provide a link to search again.
+
+
+        :param request: It is a HttpResponse from user.
+
+
+        :type request: HttpResponse.
+
+
+        :return: This method returns a html page.
+
+
+        :rtype: HttpResponse.
+    """
+    return render(request, "search/searchnotfound.html")
     
+
+
+
+    
+
+
+
+
+        
+
+
+
+
 
 
 
