@@ -5,7 +5,7 @@
 {% block body %}
 
 
-<h2 class="text-center alert alert-info">Your Upcoming Appointments {{patientName}}</h2>
+<h2 class="text-center alert alert-info">Your Upcoming Appointments {{doctorName}}</h2>
 
 <div class="container">
 <div class="col-sm-10">
@@ -13,18 +13,18 @@
   <thead>
     <tr style="text-align:center">
       <th scope="col">No.</th>
-      <th scope="col">Doctor</th>
-      <th scope="col">Adress</th>
+      <th scope="col">Patient Name</th>
+      <th scope="col">Patient Age</th>
       <th scope="col">Date</th>
       <th scope="col">Time</th>
     </tr>
   </thead>
   <tbody>
-  {% for row, timeStampList, addressList,doctorNameList,appointmentDateList,appointmentTimeList in appointmentDetails %}
+  {% for row,timeStampList,patientNameList,patientAgeList,appointmentDateList,appointmentTimeList in appointmentDetailsDoctor %}
    <tr style="text-align:center">
       <th scope="row" value="{{timeStampList}}">{{row}}</th>
-      <td>{{doctorNameList}}</td>
-      <td>{{addressList}}</td>
+      <td>{{patientNameList}}</td>
+      <td>{{patientAgeList}}</td>
       <td>{{appointmentDateList}}</td>
       <td>{{appointmentTimeList}}</td>
       <td>

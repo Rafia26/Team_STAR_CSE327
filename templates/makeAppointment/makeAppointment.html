@@ -1,4 +1,4 @@
-{% extends "base/base.html" %}
+{% extends "LogInRegister/base.html" %}
 
 {% block title %}Make Apppointment{% endblock title %}
 
@@ -7,11 +7,12 @@
 <div class="container mt-5">
 <h2 class="text-center alert alert-info">Add Appointment</h2>
 
-<form action="/makeAp/appForm/" method="POST">
+<form action="{% url 'appForm' %}" method="POST">
    {% csrf_token %}
+   
   <div class="form-group">
     <label for="doctor">Select Doctor</label>
-    <select id="doctor" name="doctorId" class="form-control" onchange="configureDropDownLists(this,document.getElementById('ddl2'))">
+    <select id="doctor" name="doctorId" class="form-control" onchange="configureDropDownLists(this,document.getElementById('ddl2'))" required>
     {% for doctorNameList,doctorId in allDoctorName %} 
      <option value="{{doctorId}}">{{doctorNameList}}</option>
     {% endfor %}
@@ -20,7 +21,7 @@
 
   <div class="form-group">
     <label for="ddl2">Select Time</label>
-    <select id="ddl2" name="timeSlot" class="form-control">
+    <select id="ddl2" name="timeSlot" class="form-control" required>
     </select>
   </div>
          
@@ -49,20 +50,15 @@
 
   <div class="form-group">
     <label for="inputDate">Date</label>
-    <input type="date" name="date"class="form-control" id="inputDate" placeholder="Date">
+    <input type="date" name="date"class="form-control" id="inputDate" placeholder="Date" required>
   </div>
 
   <script>
-  document.getElementById('inputDate').min = new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().split("T")[0];
-  
+  document.getElementById('inputDate').min = new Date(new Date().getTime()
+                                           - new Date().getTimezoneOffset() * 60000).toISOString().split("T")[0];
   </script>
 
-  <!--<div class="form-group">
-    <label for="exampleInputPhone">Phone Number</label>
-    <input type="text" name="phone_number" class="form-control" id="exampleInputPhone" placeholder="Enter your Phone Number">
-  </div>-->
-
-   <input type="submit" class="btn btn-success" value="Submit">
+  <input type="submit" class="btn btn-success" value="Submit">
 
 </form>
 

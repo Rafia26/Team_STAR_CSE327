@@ -1,5 +1,5 @@
 """
-ASGI config for projectPA project.
+ASGI config for PasheAchi project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'projectPA.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'PasheAchi.settings')
 
 application = get_asgi_application()
