@@ -1,0 +1,284 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>viewRatings package &#8212; PasheAchi 1.00 documentation</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/docs/viewRatings.rst.txt"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.rst</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#submodules">
+   Submodules
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-viewRatings.admin">
+   viewRatings.admin module
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-viewRatings.apps">
+   viewRatings.apps module
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-viewRatings.models">
+   viewRatings.models module
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-viewRatings.tests">
+   viewRatings.tests module
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-viewRatings.urls">
+   viewRatings.urls module
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-viewRatings.views">
+   viewRatings.views module
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#module-viewRatings">
+   Module contents
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="viewratings-package">
+<h1>viewRatings package<a class="headerlink" href="#viewratings-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-viewRatings.admin">
+<span id="viewratings-admin-module"></span><h2>viewRatings.admin module<a class="headerlink" href="#module-viewRatings.admin" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-viewRatings.apps">
+<span id="viewratings-apps-module"></span><h2>viewRatings.apps module<a class="headerlink" href="#module-viewRatings.apps" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="viewRatings.apps.ViewratingsConfig">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">viewRatings.apps.</span></code><code class="sig-name descname"><span class="pre">ViewratingsConfig</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">app_module</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/viewRatings/apps.html#ViewratingsConfig"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#viewRatings.apps.ViewratingsConfig" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">django.apps.config.AppConfig</span></code></p>
+<dl class="py attribute">
+<dt id="viewRatings.apps.ViewratingsConfig.default_auto_field">
+<code class="sig-name descname"><span class="pre">default_auto_field</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'django.db.models.BigAutoField'</span></em><a class="headerlink" href="#viewRatings.apps.ViewratingsConfig.default_auto_field" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="viewRatings.apps.ViewratingsConfig.name">
+<code class="sig-name descname"><span class="pre">name</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'viewRatings'</span></em><a class="headerlink" href="#viewRatings.apps.ViewratingsConfig.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-viewRatings.models">
+<span id="viewratings-models-module"></span><h2>viewRatings.models module<a class="headerlink" href="#module-viewRatings.models" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-viewRatings.tests">
+<span id="viewratings-tests-module"></span><h2>viewRatings.tests module<a class="headerlink" href="#module-viewRatings.tests" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-viewRatings.urls">
+<span id="viewratings-urls-module"></span><h2>viewRatings.urls module<a class="headerlink" href="#module-viewRatings.urls" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-viewRatings.views">
+<span id="viewratings-views-module"></span><h2>viewRatings.views module<a class="headerlink" href="#module-viewRatings.views" title="Permalink to this headline">¶</a></h2>
+<dl class="py data">
+<dt id="viewRatings.views.config">
+<code class="sig-prename descclassname"><span class="pre">viewRatings.views.</span></code><code class="sig-name descname"><span class="pre">config</span></code><em class="property"> <span class="pre">=</span> <span class="pre">{'apiKey':</span> <span class="pre">'AIzaSyD-ndCLqY-TtlabOCyy1-t0AN_O7yz7zGo',</span> <span class="pre">'appId':</span> <span class="pre">'1:1005617401533:web:1d756003c3bd2e8b0f71d4',</span> <span class="pre">'authDomain':</span> <span class="pre">'pashe-achi.firebaseapp.com',</span> <span class="pre">'databaseURL':</span> <span class="pre">'https://pashe-achi-default-rtdb.firebaseio.com/',</span> <span class="pre">'measurementId':</span> <span class="pre">'G-QR9VX6SRV4',</span> <span class="pre">'messagingSenderId':</span> <span class="pre">'1005617401533',</span> <span class="pre">'projectId':</span> <span class="pre">'pashe-achi',</span> <span class="pre">'storageBucket':</span> <span class="pre">'pashe-achi.appspot.com'}</span></em><a class="headerlink" href="#viewRatings.views.config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Global Variables</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="viewRatings.views.view_star_rating">
+<code class="sig-prename descclassname"><span class="pre">viewRatings.views.</span></code><code class="sig-name descname"><span class="pre">view_star_rating</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/viewRatings/views.html#view_star_rating"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#viewRatings.views.view_star_rating" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is used to retrieve star ratings from database
+to display each doctor’s rating according to their
+service (serviceR), behaviour (behaviourR) and Accurate Diagnosis (accdR).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>HttpResponse.</em>) – It’s a HttpResponse from user.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>If the database doesn’t contain any ratings, it returns an HTML page</dt><dd><p>showing a text: “There are no ratings at the moment”.</p>
+</dd>
+<dt>Else,</dt><dd><p>If a patient is logged in, it returns an HTML page that displays doctor ratings.
+If a doctor is logged in, it returns an HTML page that displays doctors ratings.
+If there are no ratings, the logged in user will view an HTML page showing text.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>HttpResponse.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-viewRatings">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-viewRatings" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By SFS, TT, ABR, MRK<br/>
+        
+            &copy; Copyright 2021, SFS, TT, ABR, MRK.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
