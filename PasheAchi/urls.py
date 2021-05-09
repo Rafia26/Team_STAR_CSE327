@@ -20,7 +20,22 @@ from django.urls import path, include
 from LogInRegister import views
 
 urlpatterns = [
-    
-
-    
+    path('admin/', admin.site.urls),
+    path('', views.login, name="login"),
+    path('home/', views.home, name="home"),
+    path('google_login/', views.google_login, name="google_login"),
+    path('post_login/', views.post_login, name="post_login"),
+    path('patient_signup/', views.patient_signup, name="patient_signup"),
+    path('doctor_signup/', views.doctor_signup, name="doctor_signup"),
+    #path('login_test/', views.login_test, name="login_test"),
+    #path('psignup_test/', views.psignup_test, name="psignup_test"),
+    #path('dsignup_test/', views.dsignup_test, name="dsignup_test"),
+    path('patient_post_signup/', views.patient_post_signup, name="patient_post_signup"),
+    path('doctor_post_signup/', views.doctor_post_signup, name="doctor_post_signup"),
+    path('logout/', views.logout, name="logout"), 
+    path('forget_password/', views.forget_password, name = "forget_password"),   
+    path('about_us/', views.about_us, name="about_us"),
+    path('contact_us/', views.contact_us, name="contact_us"),
+    path('description/', views.description, name="description"),
+    path('vProfile/', include('viewProfile.urls')),   
 ]

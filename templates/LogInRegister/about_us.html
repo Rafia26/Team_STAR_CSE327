@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google-signin-client_id" content="1005617401533-p7ojqnb573p5474tmc02nteo6fvg74tt.apps.googleusercontent.com">
+
+<title> About Us </title>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"crossrigin="anonymous">
+
+</head>
+
+<body>
+<div id="container">
+    <div class="nav">
+        <ul>
+         <li><a href='{% url 'description' %}' class="nav-link">Description</a></li>
+            <li><a href='{% url 'contact_us' %}' class="nav-link">Contact Us</a></li>
+        </ul>
+    </div>  
+</div>
+
+<style> 
+    body {
+        padding: 0;
+        margin: 0
+    }
+
+    #container {
+        background-image: url("https://www.vitalityurgentcare.com/wp-content/uploads/bigstock-User-Video-Calling-A-Doctor-Us-234637696-e1541183869173.jpg");
+        width: 100%;
+        height: 721px
+    }
+   
+/* This class is applied to the containing div <div class="nav"> and is used to set the background color and height of the navbar */
+    .nav {
+        background-color: #d1ede8;
+        height: 60px; /* set same as height & line-height below */
+    }
+
+/* This rule centers the nav items verticaly in the bar with the height and line height properties. Spacing between the nav items is controlled by setting right and left padding.  */
+    .nav li {
+        display: inline-block;
+        height: 60px; /* should be the same as line-height */
+        line-height: 60px; /* should be the same as height */
+        padding: 0 40px; /* "0" sets top and bottom padding to none */
+    }
+
+/* :hover allows you change the background color of the nav items when you mouse over them. Play around with the transition value to change the speed of the hover transition. */
+    .nav li:hover {
+        background: white;
+    }
+
+/* This rule is applied to the link <a> tag. It lets you turn off the link underline and set the link text color. */
+    .nav-link {
+        color: black;
+    }
+
+</style>
+
+</body>
+</html>
