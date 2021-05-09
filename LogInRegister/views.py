@@ -136,7 +136,7 @@ def post_login(request):
     #return redirect("login_test")
 
 #LoginTest
-#def login_test(request):
+def login_test(request):
     """
     This login_test method is used to test post_login funtion
     I've used this for testing purpose
@@ -151,7 +151,7 @@ def post_login(request):
 
     :rtype: HttpResponse.
     """
-    #return render(request, 'LogInRegister/home.html')
+    return render(request, 'LogInRegister/home.html')
 
 #PatientSignup
 def patient_signup(request):
@@ -234,7 +234,7 @@ def patient_post_signup(request):
     #return redirect("psignup_test")
 
 #PatientSignUpTest
-#def psignup_test(request):
+def psignup_test(request):
     """
     This psignup_test method is used to test patient_post_signup function
     I've used this for testing purpose
@@ -249,7 +249,7 @@ def patient_post_signup(request):
 
     :rtype: HttpResponse.
     """
-    #return render(request, 'LogInRegister/login.html', {"msg1":message1})
+    return render(request, 'LogInRegister/login.html', {"msg1":message1})
 
 #DoctorPostSignup    
 def doctor_post_signup(request):
@@ -316,7 +316,7 @@ def doctor_post_signup(request):
     #return redirect("dsignup_test")
 
 #DoctorSignUpTest
-#def dsignup_test(request):
+def dsignup_test(request):
     """
     This dsignup_test method is used to test post_doctor_signup function
     I've used this for testing purpose
@@ -331,7 +331,7 @@ def doctor_post_signup(request):
 
     :rtype: HttpResponse.
     """
-    #return render(request, 'LogInRegister/login.html', {"msg1":message1})
+    return render(request, 'LogInRegister/login.html', {"msg1":message1})
 
 #ForgetPassword    
 def forget_password(request):
