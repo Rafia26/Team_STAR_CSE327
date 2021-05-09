@@ -39,12 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'LogInRegister',
     'viewProfile',
-    'makeAppointment',
-    'viewAppointment',
-    'search',
-    'donate',
-    'addRatings',
-    'viewRatings',
+   
 ]
 
 MIDDLEWARE = [
