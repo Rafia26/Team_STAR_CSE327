@@ -1,0 +1,43 @@
+{% extends "LogInRegister/base.html" %}
+
+{% block title %}View Appointment{% endblock title %}
+
+{% block body %}
+
+
+<h2 class="text-center alert alert-info">Your Upcoming Appointments {{patientName}}</h2>
+
+<div class="container">
+<div class="col-sm-10">
+<table style="margin-left:auto;margin-right:auto;" class="table table-hover table-success table-striped table-bordered">
+  <thead>
+    <tr style="text-align:center">
+      <th scope="col">No.</th>
+      <th scope="col">Doctor</th>
+      <th scope="col">Adress</th>
+      <th scope="col">Date</th>
+      <th scope="col">Time</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for row, timeStampList, addressList,doctorNameList,appointmentDateList,appointmentTimeList in appointmentDetails %}
+   <tr style="text-align:center">
+      <th scope="row" value="{{timeStampList}}">{{row}}</th>
+      <td>{{doctorNameList}}</td>
+      <td>{{addressList}}</td>
+      <td>{{appointmentDateList}}</td>
+      <td>{{appointmentTimeList}}</td>
+      <td>
+      <form action="{% url 'cancelAppointments' timeStampList %}" method="POST">
+        {% csrf_token %}
+        <input type="submit" class="btn btn-danger" value="Cancel">      
+      </form>
+      </td>
+      
+    </tr>
+  {% endfor %}
+  </tbody>
+    
+</div>
+</div>
+{% endblock body %}

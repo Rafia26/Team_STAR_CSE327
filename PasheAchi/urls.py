@@ -38,4 +38,7 @@ urlpatterns = [
     path('contact_us/', views.contact_us, name="contact_us"),
     path('description/', views.description, name="description"),
     path('vProfile/', include('viewProfile.urls')),   
+    path('admin/', admin.site.urls),
+    path('makeAp/', include('makeAppointment.urls')),
+    path('viewAp/', include('viewAppointment.urls')),
 ]

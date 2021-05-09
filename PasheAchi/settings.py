@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'LogInRegister',
     'viewProfile',   
+    'makeAppointment',
+    'viewAppointment',
 ]
 
 MIDDLEWARE = [
