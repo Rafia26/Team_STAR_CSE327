@@ -40,9 +40,5 @@ urlpatterns = [
     path('makeAp/', include('makeAppointment.urls')),
     path('viewAp/', include('viewAppointment.urls')),
     path('vProfile/', include('viewProfile.urls')),
-    path('search/', include('search.urls')),
-    path('donate/', include('donate.urls')),
-    path('add_ratings/', include('addRatings.urls')),
-    path('view_ratings/', include('viewRatings.urls')),
     
 ]
