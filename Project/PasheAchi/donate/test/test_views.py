@@ -11,7 +11,6 @@ from django import urls
 import pyrebase
 import pytest
 import os
-
 from django.http import HttpResponse
 config={
     "apiKey": "AIzaSyD-ndCLqY-TtlabOCyy1-t0AN_O7yz7zGo",
@@ -41,7 +40,6 @@ def test_pageload(client, param):
     assert resolve(path).view_name == "donation"
     path = reverse('donationForm')
     assert resolve(path).view_name == "donationForm"
-
 @pytest.mark.parametrize('param', [
     ('donationForm'),
     ('donation')

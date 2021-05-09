@@ -7,7 +7,6 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from datetime import datetime, timezone
 from django.http import HttpResponse
-
 import pyrebase
 import os
 
@@ -65,30 +64,23 @@ def donation(request):
     """
     import time
     import pytz
-
     tz = pytz.timezone('Asia/Dhaka')
     timeNow = datetime.now(timezone.utc).astimezone(tz)
     millis = int(time.mktime(timeNow.timetuple()))
-
     donorName = request.POST.get('name')
     contactNum = request.POST.get('contactNum')
     email = request.POST.get('email')
     amount = request.POST.get('amount')
     trxId = request.POST.get('trxId')
-  
     data = {
         'donorName':donorName, 'contactNum':contactNum, 'email':email,
         'amount':amount, 'trxId':trxId
         }
-
     database.child("Donation").child(millis).set(data)
-
     subject = 'Pashe Achi Donation'
     message = 'Hello {}. Pashe Achi has received your donation form. Your payment will be confirmed shortly via a phone call. Thank you so much for supporting our venture.'.format(donorName)
     email_from = settings.EMAIL_HOST_USER
     recipient_list = [email,]
     send_mail(subject, message, email_from, recipient_list)
-
-
     return render(request, 'donate/confirmation.html', {'donorName':donorName})
     
