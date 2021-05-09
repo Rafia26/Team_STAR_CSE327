@@ -20,9 +20,10 @@ Step 3: Download and Install Visual Studio Code in your system from the followin
         
 Step 4: Open the project folder in VS code.
 
-Step 5: Inside the VS code terminal, activate the virtual environment and run the following commands:
+Step 5: Inside the VS code terminal, activate the virtual environment and run the following commands. Note that, this project uses Firebase Realtime database so, the python wrapper for the Firebase API should also be installed.
 
-        pip install django  
+        pip install django    
+        pip install pyrebase4  
                
 Step 6: Run the following command in your VS code terminal to run the project and click on the localhost link:  
 
