@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from addRatings.models import Ratings
 from django.conf import settings
 from django.core.mail import send_mail
@@ -17,40 +17,37 @@ config = {
     "measurementId": "G-QR9VX6SRV4"
 }
 
-"""
-    Global Variables
-"""
-
 firebase = pyrebase.initialize_app(config)
 authe = firebase.auth()
 storage = firebase.storage()
 database = firebase.database()
 
+
 def star_rating_form(request):
     """
-    This method is used to get the values from the star rating form to store data of the
-    three types of ratings of each doctor in the database.
-    And it sends email confirmation of ratings submission to the patient.
+    This method is used to get the values from the star rating form to store the types of ratings
+    of each doctor in the database.
 
      :param request: it's a HttpResponse from user.
 
      :type request: HttpResponse.
 
-     :return: this method redirects us to another method/def:page
-                that will display the rating form confirmation message.
+     :return: this method returns a html page that displays the rating form submission.
 
      :rtype: HttpResponse.
     """
+
     doctorId = request.POST.get('doctorId')
     serviceR = request.POST.get('serviceR')
     behaviourR = request.POST.get('behaviourR')
     accdR = request.POST.get('accdR')
-    # idtoken = request.session['LoginId']
-    # a = authe.get_account_info(idtoken)
-    # a = a['users']
-    # a = a[0]
-    # a = a['localId']
-    a = "6ktQk2bH3ZddF4suT8LRS3xlXJ83"
+
+    idtoken = request.session['LoginId']
+    a = authe.get_account_info(idtoken)
+    a = a['users']
+    a = a[0]
+    a = a['localId']
+
     data = {
         'patientId': a,
         'doctorId': doctorId,
@@ -58,40 +55,27 @@ def star_rating_form(request):
         'behaviourR': behaviourR,
         'accdR': accdR,
     }
+
     doctorFirstName = database.child("Users").child("Doctor").child(doctorId).child("fname").get().val()
     doctorLastName = database.child("Users").child("Doctor").child(doctorId).child("lname").get().val()
     patientFirstName = database.child("Users").child("Patient").child(a).child("fname").get().val()
     patientLastName = database.child("Users").child("Patient").child(a).child("lname").get().val()
     patientEmail = database.child("Users").child("Patient").child(a).child("email").get().val()
+
     subject = 'Pashe Achi Ratings Confirmation'
     message = 'Hello {} {}, Your rating confirmation of {} {} is done.'.format(patientFirstName, patientLastName,
                                                                                doctorFirstName, doctorLastName)
     email_from = settings.EMAIL_HOST_USER
     recipient_list = [patientEmail]
     send_mail(subject, message, email_from, recipient_list)
+
     patientFirstName = database.child("Users").child("Patient").child(a).child("fname").get().val()
     patientLastName = database.child("Users").child("Patient").child(a).child("lname").get().val()
     database.child("Ratings").child(doctorId).set(data)
-    return redirect("page")
 
-def page(request):
-    """
-    This method is used to render the values from star_rating_form and
-    send to confirm the ratings.
-
-     :param request: it's a HttpResponse from user.
-
-     :type request: HttpResponse.
-
-     :return: this method returns a html page that displays the rating form confirmation message.
-
-     :rtype: HttpResponse.
-    """
-    a = "6ktQk2bH3ZddF4suT8LRS3xlXJ83"
-    patientFirstName = database.child("Users").child("Patient").child(a).child("fname").get().val()
-    patientLastName = database.child("Users").child("Patient").child(a).child("lname").get().val()
     return render(request, 'addRatings/confirmRatings.html', {'patientFirstName': patientFirstName},
                   {'patientLastName': patientLastName})
+
 
 def confirm_star_rating(request):
     """
@@ -102,20 +86,23 @@ def confirm_star_rating(request):
 
          :type request: HttpResponse.
 
-         :return: this method returns a html page that displays the ratings form.
+         :return: this method returns a html page that displays the ratings confirmation message.
 
          :rtype: HttpResponse.
     """
+
     docId = database.child("Users").child("Doctor").get()
     docIdList = []
     for i in docId.each():
         docIdKey = i.key()
         docIdList.append(docIdKey)
+
     doctorNameList = []
     doctorId = []
     serviceRList = []
     behaviourRList = []
     accdRList = []
+
     for i in docIdList:
         tempDoctorName = database.child("Users").child("Doctor").child(i).child("fname").get().val()
         doctorNameList.append(tempDoctorName)
@@ -127,7 +114,9 @@ def confirm_star_rating(request):
         accdRList.append(tempAccdR)
         dId = i
         doctorId.append(dId)
+
     allDoctorName = zip(doctorNameList, doctorId)
     ratings = zip(doctorId, serviceRList, behaviourRList, accdRList)
+
     if star_rating_form:
         return render(request, 'addRatings/addRatings.html', {'allDoctorName': allDoctorName, 'ratings': ratings})
