@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'viewProfile',   
     'makeAppointment',
     'viewAppointment',
+    'addRatings',
+    'viewRatings',
 ]
 
 MIDDLEWARE = [
