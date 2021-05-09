@@ -25,6 +25,7 @@ authe = firebase.auth()
 storage = firebase.storage()
 database = firebase.database()
 
+
 def view_star_rating(request):
     """
          This method is used to retrieve star ratings from database
