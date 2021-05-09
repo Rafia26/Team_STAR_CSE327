@@ -45,6 +45,9 @@ database = firebase.database()
 ])
 
 def test_page(param):
+    """
+    This method is used for unit testing the pages.
+    """
     path = reverse('home') 
     assert resolve(path).view_name == "home"
 
@@ -85,6 +88,9 @@ def test_page(param):
     ('post_login'),
 ])
 def test_login(client, param,  user_data):
+    """
+    This method is used for unit testing login.
+    """
     view_url = urls.reverse('post_login')
     response = client.post(view_url, data=user_data)
     assert "login_test" in response.url
@@ -93,6 +99,9 @@ def test_login(client, param,  user_data):
     ('patient_post_signup'),
 ])
 def test_psignup(client, param,  p_data):
+    """
+    This method is used for unit testing patient signup.
+    """
     view_url = urls.reverse('patient_post_signup')
     response = client.post(view_url, data=p_data)
     assert "psignup_test" in response.url
@@ -101,6 +110,9 @@ def test_psignup(client, param,  p_data):
     ('doctor_post_signup'),
 ])
 def test_dsignup(client, param,  d_data):
+    """
+    This method is used for unit testing doctor signup.
+    """
     view_url = urls.reverse('doctor_post_signup')
     response = client.post(view_url, data=d_data)
     assert "dsignup_test" in response.url

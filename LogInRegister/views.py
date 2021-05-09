@@ -19,7 +19,6 @@ config={
     "appId": "1:1005617401533:web:1d756003c3bd2e8b0f71d4",
     "measurementId": "G-QR9VX6SRV4"
 }
-
 """
 Global Variables
 """
