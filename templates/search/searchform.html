@@ -1,0 +1,50 @@
+{% extends "LogInRegister/base.html" %}
+
+{% block title %}Search for Doctors{% endblock title %}
+
+{% block body %}
+
+<div class="container mt-5">
+<h2 class="text-center alert alert-info">Search for Doctors</h2>
+
+<form action="{% url 'search' %}" method="POST" id="s">
+
+   {% csrf_token %}
+   
+<div class="form-group">
+    <label for="specialties">Select Doctor's Specialties</label>
+    <select id="specialties" name="specialties" class="form-control" required>
+      <option>Cardiologist</option>
+      <option>Neurologist</option>
+      <option>Dermatologist</option>
+      <option>Internist</option>
+      <option>Gynaecologist</option>
+    </select>
+      </div>
+      <div class="form-group">
+    <label for="docName" class="form-label">Name</label>
+    <input type="text" class="form-control" id="docName" name="docName" placeholder="Dr. X">
+</div>
+<div class="form-group">
+        <label for="email"></label>
+        <input type="email" name="email" class="form-control" id="email" placeholder="Search by Email" required>
+        </div>
+  </div>
+       <div class="col-12">
+    <button type="submit" class="home_search_button" onclick="location.href='search'">Search</button>
+    </div>
+
+</form>
+
+</div>
+<style>
+   
+  
+    body {
+      
+      background-image: url('https://media.istockphoto.com/photos/light-blue-paper-color-with-texture-for-background-picture-id1095286208?k=6&m=1095286208&s=612x612&w=0&h=YRLtyfrpIsNzmuWxNYOwboXCipAWV8zM-NMScsCT2TQ=');
+  }
+
+  </style>
+{% endblock body %}
+

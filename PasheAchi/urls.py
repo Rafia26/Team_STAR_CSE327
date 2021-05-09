@@ -1,7 +1,8 @@
-"""PasheAchi URL Configuration
+"""
+    PasheAchi URL Configuration
 
- The `urlpatterns` list routes URLs to views. For more information please see:
-     https://docs.djangoproject.com/en/3.1/topics/http/urls/
+    The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/3.1/topics/http/urls/
 
  Examples:
   Function views
@@ -42,4 +43,6 @@ urlpatterns = [
     path('viewAp/', include('viewAppointment.urls')),
     path('add_ratings/', include('addRatings.urls')),
     path('view_ratings/', include('viewRatings.urls')),
+    path('search/', include('search.urls')),
+    path('donate/', include('donate.urls')),
 ]

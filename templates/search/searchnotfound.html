@@ -1,0 +1,25 @@
+{% extends "LogInRegister/base.html" %}
+
+{% block title %}Search Not Found{% endblock title %}
+
+{% block body %}
+
+
+<h2 class="text-center alert alert-info">Search Not Found {{search}}</h2>
+
+<div class="nav">
+<ul class="list-inline">
+
+  
+    
+    <li><a href="{% url 'searchForm' %}" class="list-inline-item">
+    Search again</a></li>
+</ul>
+</div>
+
+{% endblock body %}
+<style>
+ul.list-inline {
+  text-align: center
+}
+</style>
